@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
+use App\Models\Info;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
@@ -17,11 +18,13 @@ class AuthenticatedSessionController extends Controller
     {
         $request->authenticate();
         $user=auth()->user();
+        $info=Info::findOrfail($user->id);
         $token=$request->user()->createToken('api-token');
         return response()->json(
             
             [
                 'user'=>$user,
+                'info'=>$info,
                 'token'=>$token->plainTextToken,
             ]
         );
