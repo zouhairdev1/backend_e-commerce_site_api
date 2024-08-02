@@ -17,7 +17,7 @@ class Payment extends Model
     const STATUS_ON_HOLD = 'on_hold';
     const STATUS_DISPUTED = 'disputed';
 
-    protected $fillable = ['status'];
+    protected $fillable = ['status_p','method','amount','command_id'];
     public function command()
     {
         return $this->belongsTo(Command::class);

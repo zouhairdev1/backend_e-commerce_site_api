@@ -14,7 +14,7 @@ class Command extends Model
     const STATUS_CANCELLED = 'cancelled';
     const STATUS_REFUNDED = 'refunded';
     const STATUS_FAILED = 'failed';
-    protected $fillable = ['status'];
+    protected $fillable = ['status','total','user_id'];
     public function user()
     {
         return $this->belongsTo(User::class);
